@@ -13,6 +13,16 @@ namespace MDIApp
             get;
             set;
         }
+        public string Author
+        {
+            get;
+            set;
+        }
+        public string Genre
+        {
+            get;
+            set;
+        }
 
         public long Index
         {
@@ -26,10 +36,12 @@ namespace MDIApp
             set;
         }
 
-        public Song( string name, long index, DateTime birthDate )
+        public Song( string name, long index, DateTime birthDate, string author, string genre )
         {
             Name = name;
             Index = index;
+            Author = author;
+            Genre = genre;
             BirthDate = birthDate;
         }
     }

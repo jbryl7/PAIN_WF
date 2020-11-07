@@ -39,7 +39,7 @@ namespace MDIApp
             SongForm studentForm = new SongForm(null, Document.students);
             if( studentForm.ShowDialog() == DialogResult.OK)
             {
-                Song newSong = new Song(studentForm.SongName, studentForm.SongIndex, studentForm.SongBirthDay);
+                Song newSong = new Song(studentForm.SongName, studentForm.SongIndex, studentForm.SongBirthDay, studentForm.SongAuthor, studentForm.SongGenre);
 
                 Document.AddSong(newSong);
 
