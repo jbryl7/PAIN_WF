@@ -1,6 +1,6 @@
 ﻿namespace MDIApp
 {
-    partial class StudentsForm
+    partial class SongsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentsForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SongsForm));
             this.studentsListView = new System.Windows.Forms.ListView();
             this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderIndex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -214,17 +214,17 @@
             this.editToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.editToolStripButton.ToolTipText = "Edytuj";
             // 
-            // StudentsForm
+            // SongsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 233);
             this.Controls.Add(this.toolStripContainer1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "StudentsForm";
-            this.Text = "Students";
-            this.Activated += new System.EventHandler(this.StudentsForm_Activated);
-            this.Deactivate += new System.EventHandler(this.StudentsForm_Deactivate);
+            this.Name = "SongsForm";
+            this.Text = "Songs";
+            this.Activated += new System.EventHandler(this.SongsForm_Activated);
+            this.Deactivate += new System.EventHandler(this.SongsForm_Deactivate);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip.ResumeLayout(false);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);

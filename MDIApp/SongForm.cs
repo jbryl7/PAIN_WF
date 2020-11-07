@@ -15,17 +15,17 @@ namespace MDIApp
         private Song student;
         private List<Song> students;
 
-        public string StudentName
+        public string SongName
         {
             get { return nameTextBox.Text; }
         }
 
-        public long StudentIndex
+        public long SongIndex
         {
             get { return long.Parse( indexTextBox.Text ); }
         }
 
-        public DateTime StudentBirthDay
+        public DateTime SongBirthDay
         {
             get { return birthDayDateTimePicker.Value; }
         }
@@ -37,7 +37,7 @@ namespace MDIApp
             this.students = students;
         }
 
-        private void StudentForm_Load(object sender, EventArgs e)
+        private void SongForm_Load(object sender, EventArgs e)
         {
             if (student != null)
             {
@@ -70,7 +70,7 @@ namespace MDIApp
                 long index = long.Parse(indexTextBox.Text);
                 foreach (Song s in students)
                     if (s.Index == index && !ReferenceEquals(s, student))
-                        throw new Exception( "Student already exists." );
+                        throw new Exception( "Song already exists." );
             }
             catch( Exception exception )
             {

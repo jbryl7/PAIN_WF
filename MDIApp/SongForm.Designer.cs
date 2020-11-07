@@ -124,7 +124,7 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // StudentForm
+            // SongForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -138,9 +138,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "StudentForm";
-            this.Text = "Student";
-            this.Load += new System.EventHandler(this.StudentForm_Load);
+            this.Name = "SongForm";
+            this.Text = "Song";
+            this.Load += new System.EventHandler(this.SongForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

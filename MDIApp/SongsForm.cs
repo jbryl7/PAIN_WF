@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace MDIApp
 {
-    public partial class StudentsForm : Form
+    public partial class SongsForm : Form
     {
         private Document Document { get; set; }
 
-        public StudentsForm( Document document )
+        public SongsForm( Document document )
         {
             InitializeComponent();
             Document = document;
@@ -23,10 +23,10 @@ namespace MDIApp
         private void Form1_Load(object sender, EventArgs e)
         {
             UpdateItems();
-            Document.AddStudentEvent += Document_AddStudentEvent;
+            Document.AddSongEvent += Document_AddSongEvent;
         }
 
-        private void Document_AddStudentEvent(Song student)
+        private void Document_AddSongEvent(Song student)
         {
             ListViewItem item = new ListViewItem();
             item.Tag = student;
@@ -36,15 +36,15 @@ namespace MDIApp
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StudentForm studentForm = new StudentForm(null, Document.students);
+            SongForm studentForm = new SongForm(null, Document.students);
             if( studentForm.ShowDialog() == DialogResult.OK)
             {
-                Song newStudent = new Song(studentForm.StudentName, studentForm.StudentIndex, studentForm.StudentBirthDay);
+                Song newSong = new Song(studentForm.SongName, studentForm.SongIndex, studentForm.SongBirthDay);
 
-                Document.AddStudent(newStudent);
+                Document.AddSong(newSong);
 
                 //ListViewItem item = new ListViewItem();
-                //item.Tag = newStudent;
+                //item.Tag = newSong;
                 //UpdateItem(item);
                 //studentsListView.Items.Add(item);
             }
@@ -55,14 +55,14 @@ namespace MDIApp
             if( studentsListView.SelectedItems.Count == 1)
             {
                 Song student = (Song)studentsListView.SelectedItems[0].Tag;
-                StudentForm studentForm = new StudentForm(student, Document.students);
+                SongForm studentForm = new SongForm(student, Document.students);
                 if (studentForm.ShowDialog() == DialogResult.OK)
                 {
-                    student.Name = studentForm.StudentName;
-                    student.Index = studentForm.StudentIndex;
-                    student.BirthDate = studentForm.StudentBirthDay;
+                    student.Name = studentForm.SongName;
+                    student.Index = studentForm.SongIndex;
+                    student.BirthDate = studentForm.SongBirthDay;
 
-                    Document.UpdateStudent(student);
+                    Document.UpdateSong(student);
 
                     //UpdateItem(studentsListView.SelectedItems[0]);
                 }
@@ -96,12 +96,12 @@ namespace MDIApp
             }
         }
 
-        private void StudentsForm_Activated(object sender, EventArgs e)
+        private void SongsForm_Activated(object sender, EventArgs e)
         {
             ToolStripManager.Merge(toolStrip1, ((MainForm)MdiParent).toolStrip1);
         }
 
-        private void StudentsForm_Deactivate(object sender, EventArgs e)
+        private void SongsForm_Deactivate(object sender, EventArgs e)
         {
             ToolStripManager.RevertMerge(((MainForm)MdiParent).toolStrip1, toolStrip1);
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MDIApp
 {
-    public class Student
+    public class Song
     {
         public string Name
         {
@@ -26,7 +26,7 @@ namespace MDIApp
             set;
         }
 
-        public Student( string name, long index, DateTime birthDate )
+        public Song( string name, long index, DateTime birthDate )
         {
             Name = name;
             Index = index;
