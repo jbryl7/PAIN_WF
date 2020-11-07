@@ -8,11 +8,11 @@ namespace MDIApp
 {
     public class Document
     {
-        public List<Student> students = new List<Student>();
+        public List<Song> students = new List<Song>();
 
-        public event Action<Student> AddStudentEvent;
+        public event Action<Song> AddStudentEvent;
 
-        public void AddStudent( Student student )
+        public void AddStudent( Song student )
         {
             students.Add(student);
 
@@ -25,7 +25,7 @@ namespace MDIApp
             AddStudentEvent?.Invoke(student);
         }
 
-        public void UpdateStudent(Student student)
+        public void UpdateStudent(Song student)
         {
             throw new NotImplementedException();
         }

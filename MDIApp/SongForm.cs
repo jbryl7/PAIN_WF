@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace MDIApp
 {
-    public partial class StudentForm : Form
+    public partial class SongForm : Form
     {
-        private Student student;
-        private List<Student> students;
+        private Song student;
+        private List<Song> students;
 
         public string StudentName
         {
@@ -30,7 +30,7 @@ namespace MDIApp
             get { return birthDayDateTimePicker.Value; }
         }
 
-        public StudentForm(Student student, List<Student> students)
+        public SongForm(Song student, List<Song> students)
         {
             InitializeComponent();
             this.student = student;
@@ -68,7 +68,7 @@ namespace MDIApp
             try
             {
                 long index = long.Parse(indexTextBox.Text);
-                foreach (Student s in students)
+                foreach (Song s in students)
                     if (s.Index == index && !ReferenceEquals(s, student))
                         throw new Exception( "Student already exists." );
             }

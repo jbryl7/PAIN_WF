@@ -22,7 +22,7 @@ namespace MDIApp
 
         private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StudentsForm studentsForm = new StudentsForm( document );
+            SongsForm studentsForm = new SongsForm( document );
             studentsForm.MdiParent = this;
             studentsForm.Show();
         }

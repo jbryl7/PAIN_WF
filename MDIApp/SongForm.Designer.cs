@@ -1,6 +1,6 @@
 ﻿namespace MDIApp
 {
-    partial class StudentForm
+    partial class SongForm
     {
         /// <summary>
         /// Required designer variable.

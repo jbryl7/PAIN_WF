@@ -26,7 +26,7 @@ namespace MDIApp
             Document.AddStudentEvent += Document_AddStudentEvent;
         }
 
-        private void Document_AddStudentEvent(Student student)
+        private void Document_AddStudentEvent(Song student)
         {
             ListViewItem item = new ListViewItem();
             item.Tag = student;
@@ -39,7 +39,7 @@ namespace MDIApp
             StudentForm studentForm = new StudentForm(null, Document.students);
             if( studentForm.ShowDialog() == DialogResult.OK)
             {
-                Student newStudent = new Student(studentForm.StudentName, studentForm.StudentIndex, studentForm.StudentBirthDay);
+                Song newStudent = new Song(studentForm.StudentName, studentForm.StudentIndex, studentForm.StudentBirthDay);
 
                 Document.AddStudent(newStudent);
 
@@ -54,7 +54,7 @@ namespace MDIApp
         {
             if( studentsListView.SelectedItems.Count == 1)
             {
-                Student student = (Student)studentsListView.SelectedItems[0].Tag;
+                Song student = (Song)studentsListView.SelectedItems[0].Tag;
                 StudentForm studentForm = new StudentForm(student, Document.students);
                 if (studentForm.ShowDialog() == DialogResult.OK)
                 {
@@ -76,7 +76,7 @@ namespace MDIApp
 
         private void UpdateItem( ListViewItem item)
         {
-            Student student = (Student)item.Tag;
+            Song student = (Song)item.Tag;
             while (item.SubItems.Count < 3)
                 item.SubItems.Add(new ListViewItem.ListViewSubItem());
             item.SubItems[0].Text = student.Index.ToString();
@@ -87,7 +87,7 @@ namespace MDIApp
         private void UpdateItems()
         {
             studentsListView.Items.Clear();
-            foreach( Student student in Document.students)
+            foreach( Song student in Document.students)
             {
                 ListViewItem item = new ListViewItem();
                 item.Tag = student;
