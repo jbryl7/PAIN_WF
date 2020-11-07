@@ -58,10 +58,11 @@ namespace MDIApp
             else
             {
                 nameTextBox.Text = "Jan";
+                authorTextBox.Text = "Jan";
                 birthDayDateTimePicker.Value = new DateTime(1980, 1, 1);
-                genreChoiceBox.BeginUpdate();
                 genreChoiceBox.Items.AddRange(new object[] { "Rock", "Rap", "Metal" });
-                genreChoiceBox.EndUpdate();
+                genreChoiceBox.SelectedIndex = 0;
+                indexTextBox.Text = "1";
             }
         }
 

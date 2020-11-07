@@ -61,7 +61,8 @@ namespace MDIApp
                     student.Name = studentForm.SongName;
                     student.Index = studentForm.SongIndex;
                     student.BirthDate = studentForm.SongBirthDay;
-
+                    student.Genre = studentForm.SongGenre;
+                    student.Author= studentForm.SongAuthor;
                     Document.UpdateSong(student);
 
                     //UpdateItem(studentsListView.SelectedItems[0]);
