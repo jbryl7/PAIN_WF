@@ -164,7 +164,7 @@
             this.genreFilterToolStripComboBox1});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(259, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(292, 25);
             this.toolStrip1.TabIndex = 1;
             // 
             // addToolStripButton
@@ -247,6 +247,7 @@
             this.genreFilterToolStripComboBox1.Name = "genreFilterToolStripComboBox1";
             this.genreFilterToolStripComboBox1.Size = new System.Drawing.Size(121, 25);
             this.genreFilterToolStripComboBox1.ToolTipText = "Filtruj wg. gatunku";
+            this.genreFilterToolStripComboBox1.Click += new System.EventHandler(this.genreFilterToolStripComboBox1_Click);
             // 
             // SongsForm
             // 

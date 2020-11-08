@@ -104,18 +104,22 @@ namespace MDIApp
         private void UpdateItems()
         {
             studentsListView.Items.Clear();
+            string genreChoice = genreFilterToolStripComboBox1.SelectedText; 
             foreach( Song student in Document.students)
             {
-                ListViewItem item = new ListViewItem();
-                item.Tag = student;
-                UpdateItem(item);
-                studentsListView.Items.Add(item);
+                if (genreChoice == "All" || student.Genre == genreChoice)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Tag = student;
+                    UpdateItem(item);
+                    studentsListView.Items.Add(item);
+                }
             }
         }
 
         private void SongsForm_Activated(object sender, EventArgs e)
         {
-            toolStripContainer1.Visible = true;
+            toolStrip1.Visible = true;
             ToolStripManager.Merge(toolStrip1, ((MainForm)MdiParent).toolStrip1);
             
         }
@@ -123,7 +127,7 @@ namespace MDIApp
         private void SongsForm_Deactivate(object sender, EventArgs e)
         {
             ToolStripManager.RevertMerge(((MainForm)MdiParent).toolStrip1, toolStrip1);
-            toolStripContainer1.Visible = false;
+            toolStrip1.Visible = false;
         }
 
         private void deleteToolStripButton_Click(object sender, EventArgs e)
@@ -136,6 +140,11 @@ namespace MDIApp
                 studentsListView.Items.Remove(item);
                 Document.DeleteSong(song);
             }
+        }
+
+        private void genreFilterToolStripComboBox1_Click(object sender, EventArgs e)
+        {
+            UpdateItems();
         }
     }
 }
