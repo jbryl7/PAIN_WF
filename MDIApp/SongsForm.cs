@@ -12,18 +12,25 @@ namespace MDIApp
 {
     public partial class SongsForm : Form
     {
+
+
+
         private Document Document { get; set; }
 
         public SongsForm( Document document )
         {
             InitializeComponent();
             Document = document;
+            genreFilterToolStripComboBox1.Items.AddRange(new object[] { "All", "Rock", "Rap", "Metal"});
+            genreFilterToolStripComboBox1.SelectedIndex = 0;
         } 
 
         private void Form1_Load(object sender, EventArgs e)
         {
             UpdateItems();
             Document.AddSongEvent += Document_AddSongEvent;
+            Document.DeleteSongEvent += Document_DeleteSongEvent;
+            Document.UpdateSongEvent += Document_UpdateSongEvent;
         }
 
         private void Document_AddSongEvent(Song student)
@@ -32,6 +39,18 @@ namespace MDIApp
             item.Tag = student;
             UpdateItem(item);
             studentsListView.Items.Add(item);
+        }
+        private void Document_DeleteSongEvent(Song student)
+        {
+            ListViewItem item = new ListViewItem();
+            item.Tag = student;
+            studentsListView.Items.Remove(item);
+        }
+        private void Document_UpdateSongEvent(Song student)
+        {
+            ListViewItem item = new ListViewItem();
+            item.Tag = student;
+            UpdateItem(item);
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,7 +71,7 @@ namespace MDIApp
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if( studentsListView.SelectedItems.Count == 1)
+            if (studentsListView.SelectedItems.Count == 1)
             {
                 Song student = (Song)studentsListView.SelectedItems[0].Tag;
                 SongForm studentForm = new SongForm(student, Document.students);
@@ -62,17 +81,12 @@ namespace MDIApp
                     student.Index = studentForm.SongIndex;
                     student.BirthDate = studentForm.SongBirthDay;
                     student.Genre = studentForm.SongGenre;
-                    student.Author= studentForm.SongAuthor;
+                    student.Author = studentForm.SongAuthor;
                     Document.UpdateSong(student);
 
                     //UpdateItem(studentsListView.SelectedItems[0]);
                 }
             }
-        }
-
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private void UpdateItem( ListViewItem item)
@@ -101,12 +115,27 @@ namespace MDIApp
 
         private void SongsForm_Activated(object sender, EventArgs e)
         {
+            toolStripContainer1.Visible = true;
             ToolStripManager.Merge(toolStrip1, ((MainForm)MdiParent).toolStrip1);
+            
         }
 
         private void SongsForm_Deactivate(object sender, EventArgs e)
         {
             ToolStripManager.RevertMerge(((MainForm)MdiParent).toolStrip1, toolStrip1);
+            toolStripContainer1.Visible = false;
+        }
+
+        private void deleteToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (studentsListView.SelectedItems.Count == 1)
+            {
+                ListViewItem item = new ListViewItem();
+                Song song = (Song)studentsListView.SelectedItems[0].Tag;
+                item.Tag = studentsListView.SelectedItems[0];
+                studentsListView.Items.Remove(item);
+                Document.DeleteSong(song);
+            }
         }
     }
 }

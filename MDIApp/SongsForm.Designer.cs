@@ -34,6 +34,8 @@
             this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderIndex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderBirthDay = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderGenre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderAuthor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,13 +44,13 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.addToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.editToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.deleteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.edycjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dodajToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.columnHeaderGenre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderAuthor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.genreFilterToolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.contextMenuStrip.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -71,7 +73,7 @@
             this.studentsListView.HideSelection = false;
             this.studentsListView.Location = new System.Drawing.Point(0, 0);
             this.studentsListView.Name = "studentsListView";
-            this.studentsListView.Size = new System.Drawing.Size(607, 195);
+            this.studentsListView.Size = new System.Drawing.Size(607, 212);
             this.studentsListView.TabIndex = 2;
             this.studentsListView.UseCompatibleStateImageBehavior = false;
             this.studentsListView.View = System.Windows.Forms.View.Details;
@@ -92,6 +94,14 @@
             // 
             this.columnHeaderBirthDay.Text = "Release Date";
             this.columnHeaderBirthDay.Width = 137;
+            // 
+            // columnHeaderGenre
+            // 
+            this.columnHeaderGenre.Text = "Genre";
+            // 
+            // columnHeaderAuthor
+            // 
+            this.columnHeaderAuthor.Text = "Author";
             // 
             // contextMenuStrip
             // 
@@ -122,7 +132,7 @@
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripButton_Click);
             // 
             // toolStripContainer1
             // 
@@ -130,7 +140,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.studentsListView);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(607, 195);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(607, 212);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -149,18 +159,21 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripButton,
-            this.editToolStripButton});
+            this.editToolStripButton,
+            this.deleteToolStripButton,
+            this.genreFilterToolStripComboBox1});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(98, 42);
+            this.toolStrip1.Size = new System.Drawing.Size(259, 25);
             this.toolStrip1.TabIndex = 1;
             // 
             // addToolStripButton
             // 
+            this.addToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.addToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("addToolStripButton.Image")));
             this.addToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addToolStripButton.Name = "addToolStripButton";
-            this.addToolStripButton.Size = new System.Drawing.Size(42, 39);
+            this.addToolStripButton.Size = new System.Drawing.Size(42, 22);
             this.addToolStripButton.Text = "Dodaj";
             this.addToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.addToolStripButton.ToolTipText = "Dodaj";
@@ -168,13 +181,24 @@
             // 
             // editToolStripButton
             // 
+            this.editToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.editToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("editToolStripButton.Image")));
             this.editToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.editToolStripButton.Name = "editToolStripButton";
-            this.editToolStripButton.Size = new System.Drawing.Size(44, 39);
+            this.editToolStripButton.Size = new System.Drawing.Size(44, 22);
             this.editToolStripButton.Text = "Edytuj";
             this.editToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.editToolStripButton.ToolTipText = "Edytuj";
+            // 
+            // deleteToolStripButton
+            // 
+            this.deleteToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.deleteToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripButton.Image")));
+            this.deleteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.deleteToolStripButton.Name = "deleteToolStripButton";
+            this.deleteToolStripButton.Size = new System.Drawing.Size(38, 22);
+            this.deleteToolStripButton.Text = "Usuń";
+            this.deleteToolStripButton.Click += new System.EventHandler(this.deleteToolStripButton_Click);
             // 
             // menuStrip1
             // 
@@ -182,7 +206,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.edycjaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 42);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 25);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(607, 24);
             this.menuStrip1.TabIndex = 0;
@@ -218,13 +242,11 @@
             this.dodajToolStripMenuItem1.Text = "Dodaj";
             this.dodajToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
-            // columnHeaderGenre
+            // genreFilterToolStripComboBox1
             // 
-            this.columnHeaderGenre.Text = "Genre";
-            // 
-            // columnHeaderAuthor
-            // 
-            this.columnHeaderAuthor.Text = "Author";
+            this.genreFilterToolStripComboBox1.Name = "genreFilterToolStripComboBox1";
+            this.genreFilterToolStripComboBox1.Size = new System.Drawing.Size(121, 25);
+            this.genreFilterToolStripComboBox1.ToolTipText = "Filtruj wg. gatunku";
             // 
             // SongsForm
             // 
@@ -274,6 +296,8 @@
         private System.Windows.Forms.ToolStripButton editToolStripButton;
         private System.Windows.Forms.ColumnHeader columnHeaderGenre;
         private System.Windows.Forms.ColumnHeader columnHeaderAuthor;
+        private System.Windows.Forms.ToolStripButton deleteToolStripButton;
+        private System.Windows.Forms.ToolStripComboBox genreFilterToolStripComboBox1;
     }
 }
 

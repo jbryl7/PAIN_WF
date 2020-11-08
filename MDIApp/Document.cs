@@ -10,23 +10,23 @@ namespace MDIApp
         public List<Song> students = new List<Song>();
 
         public event Action<Song> AddSongEvent;
+        public event Action<Song> DeleteSongEvent;
+        public event Action<Song> UpdateSongEvent;
 
         public void AddSong( Song student )
         {
             students.Add(student);
-
-            //if (AddSongEvent != null)
-            //    AddSongEvent(student);
-
-            //if ( AddSongEvent != null)
-            //    AddSongEvent.Invoke(student);
-
             AddSongEvent?.Invoke(student);
         }
-
         public void UpdateSong(Song student)
         {
-            throw new NotImplementedException();
+            students.Insert(students.FindIndex(s => s.Index == student.Index), student);
+            UpdateSongEvent?.Invoke(student);
+        }
+        public void DeleteSong(Song student)
+        {
+            students.Remove(student);
+            DeleteSongEvent?.Invoke(student);
         }
     }
 }
