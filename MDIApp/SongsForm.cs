@@ -40,17 +40,17 @@ namespace MDIApp
             UpdateItem(item);
             studentsListView.Items.Add(item);
         }
-        private void Document_DeleteSongEvent(Song student)
-        {
-            ListViewItem item = new ListViewItem();
-            item.Tag = student;
-            studentsListView.Items.Remove(item);
-        }
         private void Document_UpdateSongEvent(Song student)
         {
+            // change to update specifc entry
             ListViewItem item = new ListViewItem();
             item.Tag = student;
             UpdateItem(item);
+            studentsListView.Items.Add(item);
+        }
+        private void Document_DeleteSongEvent(Song student)
+        {
+            UpdateItems();
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -59,13 +59,7 @@ namespace MDIApp
             if( studentForm.ShowDialog() == DialogResult.OK)
             {
                 Song newSong = new Song(studentForm.SongName, studentForm.SongIndex, studentForm.SongBirthDay, studentForm.SongAuthor, studentForm.SongGenre);
-
                 Document.AddSong(newSong);
-
-                //ListViewItem item = new ListViewItem();
-                //item.Tag = newSong;
-                //UpdateItem(item);
-                //studentsListView.Items.Add(item);
             }
         }
 
@@ -83,12 +77,17 @@ namespace MDIApp
                     student.Genre = studentForm.SongGenre;
                     student.Author = studentForm.SongAuthor;
                     Document.UpdateSong(student);
-
-                    //UpdateItem(studentsListView.SelectedItems[0]);
                 }
             }
         }
-
+        private void deleteToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (studentsListView.SelectedItems.Count == 1)
+            {
+                Song song = (Song)studentsListView.SelectedItems[0].Tag;
+                Document.DeleteSong(song);
+            }
+        }
         private void UpdateItem( ListViewItem item)
         {
             Song student = (Song)item.Tag;
@@ -130,17 +129,7 @@ namespace MDIApp
             toolStrip1.Visible = false;
         }
 
-        private void deleteToolStripButton_Click(object sender, EventArgs e)
-        {
-            if (studentsListView.SelectedItems.Count == 1)
-            {
-                ListViewItem item = new ListViewItem();
-                Song song = (Song)studentsListView.SelectedItems[0].Tag;
-                item.Tag = studentsListView.SelectedItems[0];
-                studentsListView.Items.Remove(item);
-                Document.DeleteSong(song);
-            }
-        }
+
 
         private void genreFilterToolStripComboBox1_Click(object sender, EventArgs e)
         {
