@@ -31,26 +31,37 @@ namespace MDIApp
             Document.AddSongEvent += Document_AddSongEvent;
             Document.DeleteSongEvent += Document_DeleteSongEvent;
             Document.UpdateSongEvent += Document_UpdateSongEvent;
+            //genreFilterToolStripComboBox1.SelectedIndexChanged += GenreFilter_SelectedGenreChange;
         }
-
+        private bool checkGenre(Song song)
+        {
+            string genreChoice = genreFilterToolStripComboBox1.SelectedText;
+            return genreChoice == "All" || song.Genre == genreChoice;
+        }
         private void Document_AddSongEvent(Song student)
         {
-            ListViewItem item = new ListViewItem();
-            item.Tag = student;
-            UpdateItem(item);
-            studentsListView.Items.Add(item);
+            if (checkGenre(student))
+            {
+                ListViewItem item = new ListViewItem();
+                item.Tag = student;
+                UpdateItem(item);
+                studentsListView.Items.Add(item);
+            }
         }
         private void Document_UpdateSongEvent(Song student)
         {
-            // change to update specifc entry
-            ListViewItem item = new ListViewItem();
-            item.Tag = student;
-            UpdateItem(item);
-            studentsListView.Items.Add(item);
+            if (checkGenre(student))
+                studentsListView.SelectedItems[0].Tag = student;
+            else
+                studentsListView.Items.Remove(studentsListView.SelectedItems[0]);
+           
+        }
+        private void GenreFilter_SelectedGenreChange(EventArgs eventArgs) {
+            UpdateItems();
         }
         private void Document_DeleteSongEvent(Song student)
         {
-            UpdateItems();
+            studentsListView.Items.Remove(studentsListView.SelectedItems[0]);
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -103,10 +114,9 @@ namespace MDIApp
         private void UpdateItems()
         {
             studentsListView.Items.Clear();
-            string genreChoice = genreFilterToolStripComboBox1.SelectedText; 
             foreach( Song student in Document.students)
             {
-                if (genreChoice == "All" || student.Genre == genreChoice)
+                if (checkGenre(student))
                 {
                     ListViewItem item = new ListViewItem();
                     item.Tag = student;
