@@ -18,7 +18,7 @@ namespace MDIApp
         {
             InitializeComponent();
             Document = document;
-        }
+        } 
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -78,11 +78,13 @@ namespace MDIApp
         private void UpdateItem( ListViewItem item)
         {
             Song student = (Song)item.Tag;
-            while (item.SubItems.Count < 3)
+            while (item.SubItems.Count < 5)
                 item.SubItems.Add(new ListViewItem.ListViewSubItem());
             item.SubItems[0].Text = student.Index.ToString();
             item.SubItems[1].Text = student.Name;
             item.SubItems[2].Text = student.BirthDate.ToShortDateString();
+            item.SubItems[3].Text = student.Author;
+            item.SubItems[4].Text = student.Genre;
         }
 
         private void UpdateItems()
