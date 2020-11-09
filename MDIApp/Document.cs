@@ -7,28 +7,34 @@ namespace MDIApp
 {
     public class Document
     {
-        public List<Song> students = new List<Song>();
-
+        public List<Song> songs = new List<Song>();
+        private int counter = 0;
+        public int getNewIndex()
+        {
+            counter += 1;
+            return counter;
+        }
         public event Action<Song> AddSongEvent;
         public event Action<Song> DeleteSongEvent;
         public event Action<Song> UpdateSongEvent;
 
-        public void AddSong( Song student )
+        public void AddSong( Song song )
         {
-            students.Add(student);
-            AddSongEvent?.Invoke(student);
+            song.Index = getNewIndex();
+            songs.Add(song);
+            AddSongEvent?.Invoke(song);
         }
-        public void UpdateSong(Song student)
+        public void UpdateSong(Song song)
         {
-            int index = students.FindIndex(s => s.Index == student.Index);
-            students.RemoveAt(index);
-            students.Insert(index, student);
-            UpdateSongEvent?.Invoke(student);
+            int index = songs.FindIndex(s => s.Index == song.Index);
+            songs.RemoveAt(index);
+            songs.Insert(index, song);
+            UpdateSongEvent?.Invoke(song);
         }
-        public void DeleteSong(Song student)
+        public void DeleteSong(Song song)
         {
-            students.Remove(student);
-            DeleteSongEvent?.Invoke(student);
+            songs.Remove(song);
+            DeleteSongEvent?.Invoke(song);
         }
     }
 }

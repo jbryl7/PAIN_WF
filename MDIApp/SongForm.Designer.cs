@@ -81,6 +81,7 @@
             // 
             // indexTextBox
             // 
+            this.indexTextBox.Enabled = false;
             this.indexTextBox.Location = new System.Drawing.Point(125, 38);
             this.indexTextBox.Name = "indexTextBox";
             this.indexTextBox.Size = new System.Drawing.Size(200, 20);

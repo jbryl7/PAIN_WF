@@ -13,7 +13,7 @@ namespace MDIApp
     public partial class SongsForm : Form
     {
         private Document Document { get; set; }
-
+        private int Counter = 0;
         public SongsForm( Document document )
         {
             InitializeComponent();
@@ -30,38 +30,43 @@ namespace MDIApp
             Document.UpdateSongEvent += Document_EditSongEvent;
         }
 
+        public int GetIndexForNewSong()
+        {
+            Counter += 1;
+            return Counter;
+        }
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SongForm studentForm = new SongForm(null, Document.students);
-            if( studentForm.ShowDialog() == DialogResult.OK)
+            SongForm songForm = new SongForm(null, Document.songs);
+            if( songForm.ShowDialog() == DialogResult.OK)
             {
-                Song newSong = new Song(studentForm.SongName, studentForm.SongIndex, studentForm.SongBirthDay, studentForm.SongAuthor, studentForm.SongGenre);
+                Song newSong = new Song(songForm.SongName, 1, songForm.SongBirthDay, songForm.SongAuthor, songForm.SongGenre);
                 Document.AddSong(newSong);
             }
         }
 
         private void editToolStripButton_Click(object sender, EventArgs e)
         {
-            if (studentsListView.SelectedItems.Count == 1)
+            if (songsListView.SelectedItems.Count == 1)
             {
-                Song student = (Song)studentsListView.SelectedItems[0].Tag;
-                SongForm studentForm = new SongForm(student, Document.students);
-                if (studentForm.ShowDialog() == DialogResult.OK)
+                Song song = (Song)songsListView.SelectedItems[0].Tag;
+                SongForm songForm = new SongForm(song, Document.songs);
+                if (songForm.ShowDialog() == DialogResult.OK)
                 {
-                    student.Name = studentForm.SongName;
-                    student.Index = studentForm.SongIndex;
-                    student.BirthDate = studentForm.SongBirthDay;
-                    student.Genre = studentForm.SongGenre;
-                    student.Author = studentForm.SongAuthor;
-                    Document.UpdateSong(student);
+                    song.Name = songForm.SongName;
+                    song.Index = songForm.SongIndex;
+                    song.BirthDate = songForm.SongBirthDay;
+                    song.Genre = songForm.SongGenre;
+                    song.Author = songForm.SongAuthor;
+                    Document.UpdateSong(song);
                 }
             }
         }
         private void deleteToolStripButton_Click(object sender, EventArgs e)
         {
-            if (studentsListView.SelectedItems.Count == 1)
+            if (songsListView.SelectedItems.Count == 1)
             {
-                Song song = (Song)studentsListView.SelectedItems[0].Tag;
+                Song song = (Song)songsListView.SelectedItems[0].Tag;
                 Document.DeleteSong(song);
             }
         }
@@ -72,84 +77,87 @@ namespace MDIApp
 
         private void UpdateItem(ListViewItem item)
         {
-            Song student = (Song)item.Tag;
+            Song song = (Song)item.Tag;
             while (item.SubItems.Count < 5)
                 item.SubItems.Add(new ListViewItem.ListViewSubItem());
-            item.SubItems[0].Text = student.Index.ToString();
-            item.SubItems[1].Text = student.Name;
-            item.SubItems[2].Text = student.BirthDate.ToShortDateString();
-            item.SubItems[3].Text = student.Author;
-            item.SubItems[4].Text = student.Genre;
+            item.SubItems[0].Text = song.Index.ToString();
+            item.SubItems[1].Text = song.Name;
+            item.SubItems[2].Text = song.Author;
+            item.SubItems[3].Text = song.Genre;
+            item.SubItems[4].Text = song.BirthDate.ToShortDateString();
         }
 
         private void UpdateItems()
         {
-            studentsListView.Items.Clear();
-            foreach( Song student in Document.students)
+            songsListView.Items.Clear();
+            foreach( Song song in Document.songs)
             {
-                if (checkGenre(student))
+                if (checkGenre(song))
                 {
                     ListViewItem item = new ListViewItem();
-                    item.Tag = student;
+                    item.Tag = song;
                     UpdateItem(item);
-                    studentsListView.Items.Add(item);
+                    songsListView.Items.Add(item);
                 }
             }
             UpdateCounters();
         }
 
-        private void Document_AddSongEvent(Song student)
+        private void Document_AddSongEvent(Song song)
         {
-            if (checkGenre(student))
+            if (checkGenre(song))
             {
                 ListViewItem item = new ListViewItem();
-                item.Tag = student;
+                item.Tag = song;
                 UpdateItem(item);
-                studentsListView.Items.Add(item);
+                songsListView.Items.Add(item);
                 UpdateCounters();
             }
         }
-        private void Document_EditSongEvent(Song student)
+        private void Document_EditSongEvent(Song song)
         {
-            if (checkGenre(student))
+            UpdateItems();
+            /*
+            if (checkGenre(song))
             {
                 ListViewItem item = new ListViewItem();
-                item.Tag = student;
+                item.Tag = song;
                 UpdateItem(item);
-                studentsListView.Items[studentsListView.SelectedIndices[0]] = item;
+                songsListView.Items[songsListView.Items.F] = item;
             }
             else
             {
-                studentsListView.Items.RemoveAt(studentsListView.SelectedIndices[0]);
+                songsListView.Items.RemoveAt(songsListView.SelectedIndices[0]);
                 UpdateCounters();
             }
-
+            */
         }
-        private void Document_DeleteSongEvent(Song student)
+        private void Document_DeleteSongEvent(Song song)
         {
-            ListViewItem item = new ListViewItem();
-            item.Tag = student;
-            UpdateItem(item);
-            studentsListView.Items.Remove(item);
+            foreach(ListViewItem item in songsListView.Items)
+                if (((Song)item.Tag).Index == song.Index)
+                    songsListView.Items.Remove(item);
             UpdateCounters();
         }
         private void SongsForm_Activated(object sender, EventArgs e)
         {
             toolStrip1.Visible = true;
             ToolStripManager.Merge(toolStrip1, ((MainForm)MdiParent).toolStrip1);
+            UpdateCounters();
         }
 
         private void SongsForm_Deactivate(object sender, EventArgs e)
         {
             ToolStripManager.RevertMerge(((MainForm)MdiParent).toolStrip1, toolStrip1);
             toolStrip1.Visible = false;
+
+            ((MainForm)MdiParent).UpdateCount(Document.songs.Count);
         }
 
         private void UpdateCounters()
         {
-            toolStripLabel1.Text = studentsListView.Items.Count.ToString();
             if (toolStrip1.Visible)
-                ((MainForm)MdiParent).UpdateCount(studentsListView.Items.Count);
+                ((MainForm)MdiParent).UpdateCount(songsListView.Items.Count);
         }
         private bool checkGenre(Song song)
         {

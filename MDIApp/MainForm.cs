@@ -18,14 +18,14 @@ namespace MDIApp
         {
             InitializeComponent();
             IsMdiContainer = true;
-            MainFormCountToolStripLabel.Text = document.students.Count.ToString();
+            MainFormCountToolStripLabel.Text = document.songs.Count.ToString();
         }
 
         private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SongsForm studentsForm = new SongsForm( document );
-            studentsForm.MdiParent = this;
-            studentsForm.Show();
+            SongsForm songsForm = new SongsForm( document );
+            songsForm.MdiParent = this;
+            songsForm.Show();
         }
         public void UpdateCount(int count) 
         {

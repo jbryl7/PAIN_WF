@@ -12,8 +12,8 @@ namespace MDIApp
 {
     public partial class SongForm : Form
     {
-        private Song student;
-        private List<Song> students;
+        private Song song;
+        private List<Song> songs;
 
         public string SongName
         {
@@ -38,23 +38,23 @@ namespace MDIApp
             get { return birthDayDateTimePicker.Value; }
         }
 
-        public SongForm(Song student, List<Song> students)
+        public SongForm(Song song, List<Song> songs)
         {
             InitializeComponent();
-            this.student = student;
-            this.students = students;
+            this.song = song;
+            this.songs = songs;
         }
 
         private void SongForm_Load(object sender, EventArgs e)
         {
-            if (student != null)
+            if (song != null)
             {
-                nameTextBox.Text = student.Name;
+                nameTextBox.Text = song.Name;
                 genreChoiceBox.Items.AddRange(new object[] { "Rock", "Rap", "Metal" });
-                genreChoiceBox.SelectedItem = student.Genre;
-                authorTextBox.Text = student.Author;
-                indexTextBox.Text = student.Index.ToString();
-                birthDayDateTimePicker.Value = student.BirthDate;
+                genreChoiceBox.SelectedItem = song.Genre;
+                authorTextBox.Text = song.Author;
+                indexTextBox.Text = song.Index.ToString();
+                birthDayDateTimePicker.Value = song.BirthDate;
             }
             else
             {
@@ -63,7 +63,7 @@ namespace MDIApp
                 birthDayDateTimePicker.Value = new DateTime(1980, 1, 1);
                 genreChoiceBox.Items.AddRange(new object[] { "Rock", "Rap", "Metal" });
                 genreChoiceBox.SelectedIndex = 0;
-                indexTextBox.Text = "1";
+                indexTextBox.Text = "Will be assigned after submission";
             }
         }
 
@@ -80,11 +80,11 @@ namespace MDIApp
 
         private void IndexTextBox_Validating(object sender, CancelEventArgs e)
         {
-            try
+           /* try
             {
                 long index = long.Parse(indexTextBox.Text);
-                foreach (Song s in students)
-                    if (s.Index == index && !ReferenceEquals(s, student))
+                foreach (Song s in songs)
+                    if (s.Index == index && !ReferenceEquals(s, song))
                         throw new Exception( "Song already exists." );
             }
             catch( Exception exception )
@@ -92,6 +92,7 @@ namespace MDIApp
                 e.Cancel = true;
                 errorProvider.SetError(indexTextBox, exception.Message);
             }
+           */
         }
 
         private void IndexTextBox_Validated(object sender, EventArgs e)

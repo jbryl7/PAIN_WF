@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SongsForm));
-            this.studentsListView = new System.Windows.Forms.ListView();
+            this.songsListView = new System.Windows.Forms.ListView();
             this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderIndex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderBirthDay = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,7 +47,6 @@
             this.editToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.deleteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.genreFilterToolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dodajToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
@@ -58,23 +57,23 @@
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // studentsListView
+            // songsListView
             // 
-            this.studentsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderName,
+            this.songsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderIndex,
-            this.columnHeaderBirthDay,
+            this.columnHeaderName,
+            this.columnHeaderAuthor,
             this.columnHeaderGenre,
-            this.columnHeaderAuthor});
-            this.studentsListView.ContextMenuStrip = this.contextMenuStrip;
-            this.studentsListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.studentsListView.HideSelection = false;
-            this.studentsListView.Location = new System.Drawing.Point(0, 0);
-            this.studentsListView.Name = "studentsListView";
-            this.studentsListView.Size = new System.Drawing.Size(607, 212);
-            this.studentsListView.TabIndex = 2;
-            this.studentsListView.UseCompatibleStateImageBehavior = false;
-            this.studentsListView.View = System.Windows.Forms.View.Details;
+            this.columnHeaderBirthDay});
+            this.songsListView.ContextMenuStrip = this.contextMenuStrip;
+            this.songsListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.songsListView.HideSelection = false;
+            this.songsListView.Location = new System.Drawing.Point(0, 0);
+            this.songsListView.Name = "songsListView";
+            this.songsListView.Size = new System.Drawing.Size(607, 212);
+            this.songsListView.TabIndex = 2;
+            this.songsListView.UseCompatibleStateImageBehavior = false;
+            this.songsListView.View = System.Windows.Forms.View.Details;
             // 
             // columnHeaderName
             // 
@@ -136,7 +135,7 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.studentsListView);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.songsListView);
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(607, 212);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
@@ -168,11 +167,10 @@
             this.addToolStripButton,
             this.editToolStripButton,
             this.deleteToolStripButton,
-            this.genreFilterToolStripComboBox1,
-            this.toolStripLabel1});
+            this.genreFilterToolStripComboBox1});
             this.toolStrip1.Location = new System.Drawing.Point(3, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(402, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(259, 25);
             this.toolStrip1.TabIndex = 1;
             // 
             // addToolStripButton
@@ -216,13 +214,6 @@
             this.genreFilterToolStripComboBox1.ToolTipText = "Filtruj wg. gatunku";
             this.genreFilterToolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.genreFilterToolStripComboBox1_SelectedIndexChanged);
             // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(143, 22);
-            this.toolStripLabel1.Text = "CountItemsToolStripLabel";
-            this.toolStripLabel1.ToolTipText = "CountItemsToolStripLabel";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -265,7 +256,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView studentsListView;
+        private System.Windows.Forms.ListView songsListView;
         private System.Windows.Forms.ColumnHeader columnHeaderName;
         private System.Windows.Forms.ColumnHeader columnHeaderIndex;
         private System.Windows.Forms.ColumnHeader columnHeaderBirthDay;
@@ -283,7 +274,6 @@
         private System.Windows.Forms.ColumnHeader columnHeaderGenre;
         private System.Windows.Forms.ColumnHeader columnHeaderAuthor;
         private System.Windows.Forms.ToolStripButton deleteToolStripButton;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripComboBox genreFilterToolStripComboBox1;
     }
 }
