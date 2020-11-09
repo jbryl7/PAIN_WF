@@ -50,7 +50,8 @@ namespace MDIApp
             if (student != null)
             {
                 nameTextBox.Text = student.Name;
-                genreChoiceBox.Text = student.Genre;
+                genreChoiceBox.Items.AddRange(new object[] { "Rock", "Rap", "Metal" });
+                genreChoiceBox.SelectedItem = student.Genre;
                 authorTextBox.Text = student.Author;
                 indexTextBox.Text = student.Index.ToString();
                 birthDayDateTimePicker.Value = student.BirthDate;

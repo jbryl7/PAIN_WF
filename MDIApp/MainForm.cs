@@ -18,6 +18,7 @@ namespace MDIApp
         {
             InitializeComponent();
             IsMdiContainer = true;
+            MainFormCountToolStripLabel.Text = document.students.Count.ToString();
         }
 
         private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
@@ -25,6 +26,10 @@ namespace MDIApp
             SongsForm studentsForm = new SongsForm( document );
             studentsForm.MdiParent = this;
             studentsForm.Show();
+        }
+        public void UpdateCount(int count) 
+        {
+            MainFormCountToolStripLabel.Text = count.ToString();
         }
     }
 }

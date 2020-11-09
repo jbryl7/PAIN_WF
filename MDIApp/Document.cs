@@ -20,7 +20,9 @@ namespace MDIApp
         }
         public void UpdateSong(Song student)
         {
-            students.Insert(students.FindIndex(s => s.Index == student.Index), student);
+            int index = students.FindIndex(s => s.Index == student.Index);
+            students.RemoveAt(index);
+            students.Insert(index, student);
             UpdateSongEvent?.Invoke(student);
         }
         public void DeleteSong(Song student)

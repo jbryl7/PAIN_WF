@@ -41,22 +41,20 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.addToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.editToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.deleteToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.edycjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.genreFilterToolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dodajToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.genreFilterToolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.contextMenuStrip.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,7 +123,6 @@
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
@@ -150,8 +147,18 @@
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip1);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(607, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // toolStrip1
             // 
@@ -161,10 +168,11 @@
             this.addToolStripButton,
             this.editToolStripButton,
             this.deleteToolStripButton,
-            this.genreFilterToolStripComboBox1});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.genreFilterToolStripComboBox1,
+            this.toolStripLabel1});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(292, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(402, 25);
             this.toolStrip1.TabIndex = 1;
             // 
             // addToolStripButton
@@ -189,6 +197,7 @@
             this.editToolStripButton.Text = "Edytuj";
             this.editToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.editToolStripButton.ToolTipText = "Edytuj";
+            this.editToolStripButton.Click += new System.EventHandler(this.editToolStripButton_Click);
             // 
             // deleteToolStripButton
             // 
@@ -200,32 +209,19 @@
             this.deleteToolStripButton.Text = "Usuń";
             this.deleteToolStripButton.Click += new System.EventHandler(this.deleteToolStripButton_Click);
             // 
-            // menuStrip1
+            // genreFilterToolStripComboBox1
             // 
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.edycjaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 25);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(607, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.genreFilterToolStripComboBox1.Name = "genreFilterToolStripComboBox1";
+            this.genreFilterToolStripComboBox1.Size = new System.Drawing.Size(121, 25);
+            this.genreFilterToolStripComboBox1.ToolTipText = "Filtruj wg. gatunku";
+            this.genreFilterToolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.genreFilterToolStripComboBox1_SelectedIndexChanged);
             // 
-            // edycjaToolStripMenuItem
+            // toolStripLabel1
             // 
-            this.edycjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dodajToolStripMenuItem});
-            this.edycjaToolStripMenuItem.Name = "edycjaToolStripMenuItem";
-            this.edycjaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.edycjaToolStripMenuItem.Text = "Edycja";
-            // 
-            // dodajToolStripMenuItem
-            // 
-            this.dodajToolStripMenuItem.Name = "dodajToolStripMenuItem";
-            this.dodajToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
-            this.dodajToolStripMenuItem.Text = "Dodaj";
-            this.dodajToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(143, 22);
+            this.toolStripLabel1.Text = "CountItemsToolStripLabel";
+            this.toolStripLabel1.ToolTipText = "CountItemsToolStripLabel";
             // 
             // contextMenuStrip1
             // 
@@ -241,13 +237,6 @@
             this.dodajToolStripMenuItem1.Size = new System.Drawing.Size(105, 22);
             this.dodajToolStripMenuItem1.Text = "Dodaj";
             this.dodajToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
-            // 
-            // genreFilterToolStripComboBox1
-            // 
-            this.genreFilterToolStripComboBox1.Name = "genreFilterToolStripComboBox1";
-            this.genreFilterToolStripComboBox1.Size = new System.Drawing.Size(121, 25);
-            this.genreFilterToolStripComboBox1.ToolTipText = "Filtruj wg. gatunku";
-            this.genreFilterToolStripComboBox1.Click += new System.EventHandler(this.genreFilterToolStripComboBox1_Click);
             // 
             // SongsForm
             // 
@@ -269,8 +258,6 @@
             this.toolStripContainer1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -288,8 +275,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem edycjaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dodajToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton addToolStripButton;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -298,6 +283,7 @@
         private System.Windows.Forms.ColumnHeader columnHeaderGenre;
         private System.Windows.Forms.ColumnHeader columnHeaderAuthor;
         private System.Windows.Forms.ToolStripButton deleteToolStripButton;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripComboBox genreFilterToolStripComboBox1;
     }
 }
