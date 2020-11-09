@@ -12,9 +12,6 @@ namespace MDIApp
 {
     public partial class SongsForm : Form
     {
-
-
-
         private Document Document { get; set; }
 
         public SongsForm( Document document )
@@ -24,39 +21,13 @@ namespace MDIApp
             genreFilterToolStripComboBox1.Items.AddRange(new object[] { "All", "Rock", "Metal", "Rap" });
             genreFilterToolStripComboBox1.SelectedIndex = 0;
             UpdateItems();
-        } 
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            UpdateItems();
             Document.AddSongEvent += Document_AddSongEvent;
             Document.DeleteSongEvent += Document_DeleteSongEvent;
-            Document.UpdateSongEvent += Document_UpdateSongEvent;
-            //genreFilterToolStripComboBox1.SelectedIndexChanged += GenreFilter_SelectedGenreChange;
-        }
-        private bool checkGenre(Song song)
-        {
-            string genreChoice = genreFilterToolStripComboBox1.Text;
-            return genreChoice == "All" || song.Genre == genreChoice;
-        }
-        private void Document_AddSongEvent(Song student)
-        {
-            if (checkGenre(student))
-            {
-                ListViewItem item = new ListViewItem();
-                item.Tag = student;
-                UpdateItem(item);
-                studentsListView.Items.Add(item);
-            }
-        }
-        private void Document_UpdateSongEvent(Song student)
-        {
-            UpdateItems();
-           
-        }
-        private void Document_DeleteSongEvent(Song student)
-        {
-            UpdateItems();
+            Document.UpdateSongEvent += Document_EditSongEvent;
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -94,7 +65,12 @@ namespace MDIApp
                 Document.DeleteSong(song);
             }
         }
-        private void UpdateItem( ListViewItem item)
+        private void genreFilterToolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateItems();
+        }
+
+        private void UpdateItem(ListViewItem item)
         {
             Song student = (Song)item.Tag;
             while (item.SubItems.Count < 5)
@@ -119,12 +95,44 @@ namespace MDIApp
                     studentsListView.Items.Add(item);
                 }
             }
-            toolStripLabel1.Text = studentsListView.Items.Count.ToString();
-            if (toolStrip1.Visible)
-                    ((MainForm)MdiParent).UpdateCount(studentsListView.Items.Count);
-            
+            UpdateCounters();
         }
 
+        private void Document_AddSongEvent(Song student)
+        {
+            if (checkGenre(student))
+            {
+                ListViewItem item = new ListViewItem();
+                item.Tag = student;
+                UpdateItem(item);
+                studentsListView.Items.Add(item);
+                UpdateCounters();
+            }
+        }
+        private void Document_EditSongEvent(Song student)
+        {
+            if (checkGenre(student))
+            {
+                ListViewItem item = new ListViewItem();
+                item.Tag = student;
+                UpdateItem(item);
+                studentsListView.Items[studentsListView.SelectedIndices[0]] = item;
+            }
+            else
+            {
+                studentsListView.Items.RemoveAt(studentsListView.SelectedIndices[0]);
+                UpdateCounters();
+            }
+
+        }
+        private void Document_DeleteSongEvent(Song student)
+        {
+            ListViewItem item = new ListViewItem();
+            item.Tag = student;
+            UpdateItem(item);
+            studentsListView.Items.Remove(item);
+            UpdateCounters();
+        }
         private void SongsForm_Activated(object sender, EventArgs e)
         {
             toolStrip1.Visible = true;
@@ -137,13 +145,17 @@ namespace MDIApp
             toolStrip1.Visible = false;
         }
 
-
-
-        private void genreFilterToolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void UpdateCounters()
         {
-            UpdateItems();
+            toolStripLabel1.Text = studentsListView.Items.Count.ToString();
+            if (toolStrip1.Visible)
+                ((MainForm)MdiParent).UpdateCount(studentsListView.Items.Count);
         }
-
+        private bool checkGenre(Song song)
+        {
+            string genreChoice = genreFilterToolStripComboBox1.Text;
+            return genreChoice == "All" || song.Genre == genreChoice;
+        }
 
     }
 }
