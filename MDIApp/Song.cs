@@ -30,7 +30,7 @@ namespace MDIApp
             set;
         }
 
-        public DateTime BirthDate
+        public DateTime ReleaseDate
         {
             get;
             set;
@@ -42,7 +42,7 @@ namespace MDIApp
             Index = index;
             Author = author;
             Genre = genre;
-            BirthDate = birthDate;
+            ReleaseDate = birthDate;
         }
     }
 }

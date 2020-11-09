@@ -48,33 +48,33 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Location = new System.Drawing.Point(12, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
+            this.label1.Text = "Title";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 41);
+            this.label2.Location = new System.Drawing.Point(12, 22);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.Size = new System.Drawing.Size(16, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Index";
+            this.label2.Text = "Id";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 70);
+            this.label3.Location = new System.Drawing.Point(12, 99);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
+            this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Birth day";
+            this.label3.Text = "Release Date";
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(125, 12);
+            this.nameTextBox.Location = new System.Drawing.Point(125, 41);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(200, 20);
             this.nameTextBox.TabIndex = 3;
@@ -82,7 +82,7 @@
             // indexTextBox
             // 
             this.indexTextBox.Enabled = false;
-            this.indexTextBox.Location = new System.Drawing.Point(125, 38);
+            this.indexTextBox.Location = new System.Drawing.Point(125, 15);
             this.indexTextBox.Name = "indexTextBox";
             this.indexTextBox.Size = new System.Drawing.Size(200, 20);
             this.indexTextBox.TabIndex = 4;
@@ -91,7 +91,7 @@
             // 
             // birthDayDateTimePicker
             // 
-            this.birthDayDateTimePicker.Location = new System.Drawing.Point(125, 64);
+            this.birthDayDateTimePicker.Location = new System.Drawing.Point(125, 93);
             this.birthDayDateTimePicker.Name = "birthDayDateTimePicker";
             this.birthDayDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.birthDayDateTimePicker.TabIndex = 5;
@@ -124,7 +124,7 @@
             // authorTextBox
             // 
             this.errorProvider.SetIconAlignment(this.authorTextBox, System.Windows.Forms.ErrorIconAlignment.TopLeft);
-            this.authorTextBox.Location = new System.Drawing.Point(125, 94);
+            this.authorTextBox.Location = new System.Drawing.Point(125, 67);
             this.authorTextBox.Name = "authorTextBox";
             this.authorTextBox.Size = new System.Drawing.Size(200, 20);
             this.authorTextBox.TabIndex = 10;
@@ -133,7 +133,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(12, 97);
+            this.label4.Location = new System.Drawing.Point(12, 70);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 8;
@@ -142,7 +142,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 123);
+            this.label5.Location = new System.Drawing.Point(14, 119);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 9;
@@ -151,7 +151,7 @@
             // genreChoiceBox
             // 
             this.genreChoiceBox.FormattingEnabled = true;
-            this.genreChoiceBox.Location = new System.Drawing.Point(125, 126);
+            this.genreChoiceBox.Location = new System.Drawing.Point(125, 119);
             this.genreChoiceBox.Name = "genreChoiceBox";
             this.genreChoiceBox.Size = new System.Drawing.Size(196, 43);
             this.genreChoiceBox.TabIndex = 11;

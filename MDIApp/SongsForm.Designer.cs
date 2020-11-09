@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SongsForm));
             this.songsListView = new System.Windows.Forms.ListView();
-            this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderIndex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderBirthDay = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderGenre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderAuthor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderGenre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderBirthDay = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,30 +75,28 @@
             this.songsListView.UseCompatibleStateImageBehavior = false;
             this.songsListView.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeaderName
-            // 
-            this.columnHeaderName.DisplayIndex = 1;
-            this.columnHeaderName.Text = "Name";
-            this.columnHeaderName.Width = 117;
-            // 
             // columnHeaderIndex
             // 
-            this.columnHeaderIndex.DisplayIndex = 0;
-            this.columnHeaderIndex.Text = "Index";
+            this.columnHeaderIndex.Text = "Id";
             this.columnHeaderIndex.Width = 64;
             // 
-            // columnHeaderBirthDay
+            // columnHeaderName
             // 
-            this.columnHeaderBirthDay.Text = "Release Date";
-            this.columnHeaderBirthDay.Width = 137;
+            this.columnHeaderName.Text = "Title";
+            this.columnHeaderName.Width = 117;
+            // 
+            // columnHeaderAuthor
+            // 
+            this.columnHeaderAuthor.Text = "Author";
             // 
             // columnHeaderGenre
             // 
             this.columnHeaderGenre.Text = "Genre";
             // 
-            // columnHeaderAuthor
+            // columnHeaderBirthDay
             // 
-            this.columnHeaderAuthor.Text = "Author";
+            this.columnHeaderBirthDay.Text = "Release Date";
+            this.columnHeaderBirthDay.Width = 137;
             // 
             // contextMenuStrip
             // 

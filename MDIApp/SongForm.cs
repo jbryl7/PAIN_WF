@@ -33,7 +33,7 @@ namespace MDIApp
             get { return long.Parse( indexTextBox.Text ); }
         }
 
-        public DateTime SongBirthDay
+        public DateTime SongReleaseDate
         {
             get { return birthDayDateTimePicker.Value; }
         }
@@ -54,7 +54,7 @@ namespace MDIApp
                 genreChoiceBox.SelectedItem = song.Genre;
                 authorTextBox.Text = song.Author;
                 indexTextBox.Text = song.Index.ToString();
-                birthDayDateTimePicker.Value = song.BirthDate;
+                birthDayDateTimePicker.Value = song.ReleaseDate;
             }
             else
             {

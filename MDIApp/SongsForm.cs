@@ -40,7 +40,7 @@ namespace MDIApp
             SongForm songForm = new SongForm(null, Document.songs);
             if( songForm.ShowDialog() == DialogResult.OK)
             {
-                Song newSong = new Song(songForm.SongName, 1, songForm.SongBirthDay, songForm.SongAuthor, songForm.SongGenre);
+                Song newSong = new Song(songForm.SongName, 1, songForm.SongReleaseDate, songForm.SongAuthor, songForm.SongGenre);
                 Document.AddSong(newSong);
             }
         }
@@ -55,7 +55,7 @@ namespace MDIApp
                 {
                     song.Name = songForm.SongName;
                     song.Index = songForm.SongIndex;
-                    song.BirthDate = songForm.SongBirthDay;
+                    song.ReleaseDate = songForm.SongReleaseDate;
                     song.Genre = songForm.SongGenre;
                     song.Author = songForm.SongAuthor;
                     Document.UpdateSong(song);
@@ -84,7 +84,7 @@ namespace MDIApp
             item.SubItems[1].Text = song.Name;
             item.SubItems[2].Text = song.Author;
             item.SubItems[3].Text = song.Genre;
-            item.SubItems[4].Text = song.BirthDate.ToShortDateString();
+            item.SubItems[4].Text = song.ReleaseDate.ToShortDateString();
         }
 
         private void UpdateItems()
@@ -161,7 +161,7 @@ namespace MDIApp
         }
         private bool checkGenre(Song song)
         {
-            string genreChoice = genreFilterToolStripComboBox1.Text;
+            string genreChoice = genreFilterToolStripComboBox1?.Text;
             return genreChoice == "All" || song.Genre == genreChoice;
         }
 
