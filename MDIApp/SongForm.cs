@@ -7,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Globalization;
 namespace MDIApp
 {
     public partial class SongForm : Form
     {
         private Song song;
-        private List<Song> songs;
 
         public string SongName
         {
@@ -21,17 +20,13 @@ namespace MDIApp
         }
         public string SongGenre
         {
-            get { return genreChoiceBox.Text; }
+            get { return genreTextBox.Text; }
         }
         public string SongAuthor
         {
             get { return authorTextBox.Text; }
         }
 
-        public long SongIndex
-        {
-            get { return long.Parse( indexTextBox.Text ); }
-        }
 
         public DateTime SongReleaseDate
         {
@@ -42,7 +37,6 @@ namespace MDIApp
         {
             InitializeComponent();
             this.song = song;
-            this.songs = songs;
         }
 
         private void SongForm_Load(object sender, EventArgs e)
@@ -50,10 +44,9 @@ namespace MDIApp
             if (song != null)
             {
                 nameTextBox.Text = song.Name;
-                genreChoiceBox.Items.AddRange(new object[] { "Rock", "Rap", "Metal" });
-                genreChoiceBox.SelectedItem = song.Genre;
+                genreTextBox.Text = song.Genre;
+                userControl11.setState(song.Genre);
                 authorTextBox.Text = song.Author;
-                indexTextBox.Text = song.Index.ToString();
                 birthDayDateTimePicker.Value = song.ReleaseDate;
             }
             else
@@ -61,9 +54,7 @@ namespace MDIApp
                 nameTextBox.Text = "Jan";
                 authorTextBox.Text = "Jan";
                 birthDayDateTimePicker.Value = new DateTime(1980, 1, 1);
-                genreChoiceBox.Items.AddRange(new object[] { "Rock", "Rap", "Metal" });
-                genreChoiceBox.SelectedIndex = 0;
-                indexTextBox.Text = "Will be assigned after submission";
+                genreTextBox.Text = userControl11.getStateAsString();
             }
         }
 
@@ -78,26 +69,62 @@ namespace MDIApp
             DialogResult = DialogResult.Cancel;
         }
 
-        private void IndexTextBox_Validating(object sender, CancelEventArgs e)
+        private void authorTextBox_Validating(object sender, CancelEventArgs e)
         {
-           /* try
+            try
             {
-                long index = long.Parse(indexTextBox.Text);
-                foreach (Song s in songs)
-                    if (s.Index == index && !ReferenceEquals(s, song))
-                        throw new Exception( "Song already exists." );
+                if (authorTextBox.TextLength == 0)
+                    throw new Exception("Empty textBox"); 
             }
-            catch( Exception exception )
+            catch (Exception exception)
             {
                 e.Cancel = true;
-                errorProvider.SetError(indexTextBox, exception.Message);
+                errorProvider.SetError(authorTextBox, exception.Message);
             }
-           */
+        }
+        private void nameTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (nameTextBox.TextLength == 0)
+                    throw new Exception("Empty textBox");
+            }
+            catch (Exception exception)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(nameTextBox, exception.Message);
+            }
+        }
+        private void releaseDateTimePicker_TextBox_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (DateTime.Parse(birthDayDateTimePicker.Text) > DateTime.Now)
+                 throw new Exception("Release Date in future"); 
+            }
+            catch (Exception exception)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(birthDayDateTimePicker, exception.Message);
+            }
+        }
+        private void nameTextBox_Validated(object sender, EventArgs e)
+        {
+            errorProvider.SetError(nameTextBox, "");
         }
 
-        private void IndexTextBox_Validated(object sender, EventArgs e)
+        private void authorTextBox_Validated(object sender, EventArgs e)
         {
-            errorProvider.SetError(indexTextBox, "");
+            errorProvider.SetError(authorTextBox, "");
+        }
+
+        private void releaseDateTimePicker_TextBox_Validated(object sender, EventArgs e)
+        {
+            errorProvider.SetError(birthDayDateTimePicker, "");
+        }
+        public void setGenre()
+        {
+            genreTextBox.Text = userControl11.getStateAsString();
         }
     }
 }

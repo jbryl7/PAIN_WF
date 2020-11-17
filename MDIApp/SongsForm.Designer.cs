@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SongsForm));
             this.songsListView = new System.Windows.Forms.ListView();
-            this.columnHeaderIndex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderAuthor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderGenre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -60,7 +59,6 @@
             // songsListView
             // 
             this.songsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderIndex,
             this.columnHeaderName,
             this.columnHeaderAuthor,
             this.columnHeaderGenre,
@@ -74,11 +72,6 @@
             this.songsListView.TabIndex = 2;
             this.songsListView.UseCompatibleStateImageBehavior = false;
             this.songsListView.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeaderIndex
-            // 
-            this.columnHeaderIndex.Text = "Id";
-            this.columnHeaderIndex.Width = 64;
             // 
             // columnHeaderName
             // 
@@ -256,7 +249,6 @@
 
         private System.Windows.Forms.ListView songsListView;
         private System.Windows.Forms.ColumnHeader columnHeaderName;
-        private System.Windows.Forms.ColumnHeader columnHeaderIndex;
         private System.Windows.Forms.ColumnHeader columnHeaderBirthDay;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;

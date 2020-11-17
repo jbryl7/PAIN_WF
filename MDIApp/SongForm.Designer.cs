@@ -30,10 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.indexTextBox = new System.Windows.Forms.TextBox();
             this.birthDayDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -41,7 +39,8 @@
             this.authorTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.genreChoiceBox = new System.Windows.Forms.ListBox();
+            this.genreTextBox = new System.Windows.Forms.TextBox();
+            this.userControl11 = new MDIApp.UserControl1();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,15 +52,6 @@
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Title";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(16, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Id";
             // 
             // label3
             // 
@@ -78,16 +68,8 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(200, 20);
             this.nameTextBox.TabIndex = 3;
-            // 
-            // indexTextBox
-            // 
-            this.indexTextBox.Enabled = false;
-            this.indexTextBox.Location = new System.Drawing.Point(125, 15);
-            this.indexTextBox.Name = "indexTextBox";
-            this.indexTextBox.Size = new System.Drawing.Size(200, 20);
-            this.indexTextBox.TabIndex = 4;
-            this.indexTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.IndexTextBox_Validating);
-            this.indexTextBox.Validated += new System.EventHandler(this.IndexTextBox_Validated);
+            this.nameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.nameTextBox_Validating);
+            this.nameTextBox.Validated += new System.EventHandler(this.nameTextBox_Validated);
             // 
             // birthDayDateTimePicker
             // 
@@ -96,6 +78,8 @@
             this.birthDayDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.birthDayDateTimePicker.TabIndex = 5;
             this.birthDayDateTimePicker.Value = new System.DateTime(1990, 6, 2, 0, 0, 0, 0);
+            this.birthDayDateTimePicker.Validating += new System.ComponentModel.CancelEventHandler(this.releaseDateTimePicker_TextBox_Validating);
+            this.birthDayDateTimePicker.Validated += new System.EventHandler(this.releaseDateTimePicker_TextBox_Validated);
             // 
             // okButton
             // 
@@ -128,6 +112,8 @@
             this.authorTextBox.Name = "authorTextBox";
             this.authorTextBox.Size = new System.Drawing.Size(200, 20);
             this.authorTextBox.TabIndex = 10;
+            this.authorTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.authorTextBox_Validating);
+            this.authorTextBox.Validated += new System.EventHandler(this.authorTextBox_Validated);
             // 
             // label4
             // 
@@ -148,30 +134,37 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Genre";
             // 
-            // genreChoiceBox
+            // genreTextBox
             // 
-            this.genreChoiceBox.FormattingEnabled = true;
-            this.genreChoiceBox.Location = new System.Drawing.Point(125, 119);
-            this.genreChoiceBox.Name = "genreChoiceBox";
-            this.genreChoiceBox.Size = new System.Drawing.Size(196, 43);
-            this.genreChoiceBox.TabIndex = 11;
+            this.errorProvider.SetIconAlignment(this.genreTextBox, System.Windows.Forms.ErrorIconAlignment.TopLeft);
+            this.genreTextBox.Location = new System.Drawing.Point(125, 119);
+            this.genreTextBox.Name = "genreTextBox";
+            this.genreTextBox.ReadOnly = true;
+            this.genreTextBox.Size = new System.Drawing.Size(200, 20);
+            this.genreTextBox.TabIndex = 13;
+            // 
+            // userControl11
+            // 
+            this.userControl11.Location = new System.Drawing.Point(354, 50);
+            this.userControl11.Name = "userControl11";
+            this.userControl11.Size = new System.Drawing.Size(167, 162);
+            this.userControl11.TabIndex = 12;
             // 
             // SongForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 236);
-            this.Controls.Add(this.genreChoiceBox);
+            this.ClientSize = new System.Drawing.Size(566, 258);
+            this.Controls.Add(this.genreTextBox);
+            this.Controls.Add(this.userControl11);
             this.Controls.Add(this.authorTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.birthDayDateTimePicker);
-            this.Controls.Add(this.indexTextBox);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "SongForm";
             this.Text = "Song";
@@ -185,10 +178,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.TextBox indexTextBox;
         private System.Windows.Forms.DateTimePicker birthDayDateTimePicker;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
@@ -196,6 +187,7 @@
         private System.Windows.Forms.TextBox authorTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListBox genreChoiceBox;
+        private UserControl1 userControl11;
+        private System.Windows.Forms.TextBox genreTextBox;
     }
 }

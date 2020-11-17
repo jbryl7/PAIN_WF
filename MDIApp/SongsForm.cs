@@ -14,12 +14,15 @@ namespace MDIApp
     {
         private Document Document { get; set; }
         private int Counter = 0;
+        string genreChoice;
+
         public SongsForm( Document document )
         {
             InitializeComponent();
             Document = document;
-            genreFilterToolStripComboBox1.Items.AddRange(new object[] { "All", "Rock", "Metal", "Rap" });
+            genreFilterToolStripComboBox1.Items.AddRange(new object[] { "All", "rock", "metal", "rap" });
             genreFilterToolStripComboBox1.SelectedIndex = 0;
+            genreChoice = genreFilterToolStripComboBox1.Text;
             UpdateItems();
         }
 
@@ -38,9 +41,10 @@ namespace MDIApp
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SongForm songForm = new SongForm(null, Document.songs);
+
             if( songForm.ShowDialog() == DialogResult.OK)
             {
-                Song newSong = new Song(songForm.SongName, 1, songForm.SongReleaseDate, songForm.SongAuthor, songForm.SongGenre);
+                Song newSong = new Song(songForm.SongName, songForm.SongReleaseDate, songForm.SongAuthor, songForm.SongGenre);
                 Document.AddSong(newSong);
             }
         }
@@ -54,7 +58,6 @@ namespace MDIApp
                 if (songForm.ShowDialog() == DialogResult.OK)
                 {
                     song.Name = songForm.SongName;
-                    song.Index = songForm.SongIndex;
                     song.ReleaseDate = songForm.SongReleaseDate;
                     song.Genre = songForm.SongGenre;
                     song.Author = songForm.SongAuthor;
@@ -72,6 +75,7 @@ namespace MDIApp
         }
         private void genreFilterToolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            genreChoice = genreFilterToolStripComboBox1.Text;
             UpdateItems();
         }
 
@@ -80,11 +84,11 @@ namespace MDIApp
             Song song = (Song)item.Tag;
             while (item.SubItems.Count < 5)
                 item.SubItems.Add(new ListViewItem.ListViewSubItem());
-            item.SubItems[0].Text = song.Index.ToString();
-            item.SubItems[1].Text = song.Name;
-            item.SubItems[2].Text = song.Author;
-            item.SubItems[3].Text = song.Genre;
-            item.SubItems[4].Text = song.ReleaseDate.ToShortDateString();
+            int i = 0;
+            item.SubItems[i++].Text = song.Name;
+            item.SubItems[i++].Text = song.Author;
+            item.SubItems[i++].Text = song.Genre;
+            item.SubItems[i++].Text = song.ReleaseDate.ToShortDateString();
         }
 
         private void UpdateItems()
@@ -92,7 +96,7 @@ namespace MDIApp
             songsListView.Items.Clear();
             foreach( Song song in Document.songs)
             {
-                if (checkGenre(song))
+                if (checkFilters(song))
                 {
                     ListViewItem item = new ListViewItem();
                     item.Tag = song;
@@ -105,7 +109,7 @@ namespace MDIApp
 
         private void Document_AddSongEvent(Song song)
         {
-            if (checkGenre(song))
+            if (checkFilters(song))
             {
                 ListViewItem item = new ListViewItem();
                 item.Tag = song;
@@ -116,28 +120,38 @@ namespace MDIApp
         }
         private void Document_EditSongEvent(Song song)
         {
-            UpdateItems();
-            /*
-            if (checkGenre(song))
+            foreach (ListViewItem it in songsListView.Items)
+            {
+                if (it.Tag == song)
+                {
+                    if (checkFilters(song))
+                        UpdateItem(it);
+                    else
+                    {
+                        songsListView.Items.Remove(it);
+                        UpdateCounters();
+                    }
+                    return;
+                }
+            }
+            if (checkFilters(song))
             {
                 ListViewItem item = new ListViewItem();
                 item.Tag = song;
                 UpdateItem(item);
-                songsListView.Items[songsListView.Items.F] = item;
-            }
-            else
-            {
-                songsListView.Items.RemoveAt(songsListView.SelectedIndices[0]);
+                songsListView.Items.Add(item);
                 UpdateCounters();
             }
-            */
         }
         private void Document_DeleteSongEvent(Song song)
         {
-            foreach(ListViewItem item in songsListView.Items)
-                if (((Song)item.Tag).Index == song.Index)
+            foreach (ListViewItem item in songsListView.Items)
+                if (item.Tag == song)
+                {
                     songsListView.Items.Remove(item);
-            UpdateCounters();
+                    UpdateCounters();
+                    return;
+                }
         }
         private void SongsForm_Activated(object sender, EventArgs e)
         {
@@ -159,9 +173,8 @@ namespace MDIApp
             if (toolStrip1.Visible)
                 ((MainForm)MdiParent).UpdateCount(songsListView.Items.Count);
         }
-        private bool checkGenre(Song song)
+        private bool checkFilters(Song song)
         {
-            string genreChoice = genreFilterToolStripComboBox1?.Text;
             return genreChoice == "All" || song.Genre == genreChoice;
         }
 

@@ -69,6 +69,12 @@
     <Compile Include="SongsForm.Designer.cs">
       <DependentUpon>SongsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,6 +94,9 @@
     <EmbeddedResource Include="SongsForm.resx">
       <DependentUpon>SongsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -102,7 +111,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\addToolStripButton.Image.png" />
+    <Resource Include="Resources\addToolStripButton.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rap.bmp" />
+    <Resource Include="images\metal.bmp" />
+    <Resource Include="images\rock.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\metal.bmp" />
+    <Content Include="Properties\rap.bmp" />
+    <Content Include="Properties\rock.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
