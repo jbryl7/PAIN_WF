@@ -47,7 +47,7 @@ namespace MDIApp
             {
                 nameTextBox.Text = song.Name;
                 genreTextBox.Text = song.Genre;
-                userControl11.setState(song.Genre);
+                userControl11.Picture_ = userControl11.getEnumFromString(song.Genre);
                 authorTextBox.Text = song.Author;
                 birthDayDateTimePicker.Value = song.ReleaseDate;
             }
@@ -59,7 +59,7 @@ namespace MDIApp
                 genreTextBox.Text = userControl11.getStateAsString();
             }
         }
-        private void UserControl1_ChangePictureGenreEvent(string x)
+        private void UserControl1_ChangePictureGenreEvent()
         {
             genreTextBox.Text = userControl11.getStateAsString();
         }

@@ -147,7 +147,7 @@
             // 
             this.userControl11.Location = new System.Drawing.Point(354, 50);
             this.userControl11.Name = "userControl11";
-            this.userControl11.Picture_ = MDIApp.UserControl1.PictureGenre.rap;
+            this.userControl11.Picture_ = MDIApp.UserControl1.PictureGenre.Rap;
             this.userControl11.Size = new System.Drawing.Size(167, 162);
             this.userControl11.TabIndex = 12;
             // 
