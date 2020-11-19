@@ -13,9 +13,15 @@ namespace MDIApp
     public partial class UserControl1 : UserControl
     {
         public enum PictureGenre { rock, metal, rap };
-        public PictureGenre state;
+        public PictureGenre state { get; set; }
         private System.ComponentModel.IContainer components = null;
+        public event Action<string> UpdatePictureGenreEvent;
 
+        public void ChangePictureGenre()
+        {
+            setImage();
+            UpdatePictureGenreEvent?.Invoke("");
+        }
         public UserControl1()
         {
             InitializeComponent();
@@ -25,18 +31,16 @@ namespace MDIApp
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             state = (PictureGenre)(((int)state + 1) % 3);
-            setImage();
-            ((SongForm)ParentForm).setGenre();
+            ChangePictureGenre();
         }
         public void setState(string state_)
         {
             state = getEnumFromString(state_);
-            setImage();
+            ChangePictureGenre();
         }
         private void setImage()
         {
             if (state == PictureGenre.rock)
-
                 pictureBox1.Image = global::MDIApp.Properties.Resources.rock;
             else if (state == PictureGenre.metal)
                 pictureBox1.Image = global::MDIApp.Properties.Resources.metal;

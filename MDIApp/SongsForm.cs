@@ -15,7 +15,6 @@ namespace MDIApp
         private Document Document { get; set; }
         private int Counter = 0;
         string genreChoice;
-
         public SongsForm( Document document )
         {
             InitializeComponent();
@@ -178,5 +177,13 @@ namespace MDIApp
             return genreChoice == "All" || song.Genre == genreChoice;
         }
 
+        private void SongsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.ParentForm.MdiChildren.Length == 1 && e.CloseReason != CloseReason.MdiFormClosing)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
+

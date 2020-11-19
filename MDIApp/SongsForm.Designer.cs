@@ -231,6 +231,7 @@
             this.Text = "Songs";
             this.Activated += new System.EventHandler(this.SongsForm_Activated);
             this.Deactivate += new System.EventHandler(this.SongsForm_Deactivate);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SongsForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip.ResumeLayout(false);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);

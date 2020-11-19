@@ -19,6 +19,9 @@ namespace MDIApp
             InitializeComponent();
             IsMdiContainer = true;
             MainFormCountToolStripLabel.Text = document.songs.Count.ToString();
+            SongsForm songsForm = new SongsForm(document);
+            songsForm.MdiParent = this;
+            songsForm.Show();
         }
 
         private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)

@@ -41,6 +41,8 @@ namespace MDIApp
 
         private void SongForm_Load(object sender, EventArgs e)
         {
+            userControl11.UpdatePictureGenreEvent += UserControl1_ChangePictureGenreEvent;
+
             if (song != null)
             {
                 nameTextBox.Text = song.Name;
@@ -57,7 +59,10 @@ namespace MDIApp
                 genreTextBox.Text = userControl11.getStateAsString();
             }
         }
-
+        private void UserControl1_ChangePictureGenreEvent(string x)
+        {
+            genreTextBox.Text = userControl11.getStateAsString();
+        }
         private void OkButton_Click(object sender, EventArgs e)
         {
             if (ValidateChildren())
