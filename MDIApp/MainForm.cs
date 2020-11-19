@@ -18,7 +18,7 @@ namespace MDIApp
         {
             InitializeComponent();
             IsMdiContainer = true;
-            MainFormCountToolStripLabel.Text = document.songs.Count.ToString();
+            statusLabel.Text = document.songs.Count.ToString();
             SongsForm songsForm = new SongsForm(document);
             songsForm.MdiParent = this;
             songsForm.Show();
@@ -32,7 +32,7 @@ namespace MDIApp
         }
         public void UpdateCount(int count) 
         {
-            MainFormCountToolStripLabel.Text = count.ToString();
+            statusLabel.Text = count.ToString();
         }
     }
 }

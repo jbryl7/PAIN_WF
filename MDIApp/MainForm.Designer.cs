@@ -34,9 +34,11 @@
             this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.MainFormCountToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.statusToolStrip = new System.Windows.Forms.ToolStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripLabel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.statusToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -62,15 +64,14 @@
             // newWindowToolStripMenuItem
             // 
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
-            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.newWindowToolStripMenuItem.Text = "Nowe okno";
             this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.newWindowToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.MainFormCountToolStripLabel});
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(600, 38);
@@ -87,18 +88,29 @@
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton1.Click += new System.EventHandler(this.newWindowToolStripMenuItem_Click);
             // 
-            // MainFormCountToolStripLabel
+            // statusToolStrip
             // 
-            this.MainFormCountToolStripLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.MainFormCountToolStripLabel.Name = "MainFormCountToolStripLabel";
-            this.MainFormCountToolStripLabel.Size = new System.Drawing.Size(169, 35);
-            this.MainFormCountToolStripLabel.Text = "MainFormCountToolStripLabel";
+            this.statusToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.statusToolStrip.Location = new System.Drawing.Point(0, 62);
+            this.statusToolStrip.Name = "statusToolStrip";
+            this.statusToolStrip.Size = new System.Drawing.Size(600, 25);
+            this.statusToolStrip.TabIndex = 2;
+            this.statusToolStrip.Text = "toolStrip2";
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(66, 22);
+            this.statusLabel.Text = "statusLabel";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.statusToolStrip);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -109,6 +121,8 @@
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.statusToolStrip.ResumeLayout(false);
+            this.statusToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,6 +135,7 @@
         private System.Windows.Forms.ToolStripMenuItem newWindowToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         public System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripLabel MainFormCountToolStripLabel;
+        private System.Windows.Forms.ToolStrip statusToolStrip;
+        private System.Windows.Forms.ToolStripLabel statusLabel;
     }
 }

@@ -69,7 +69,9 @@
     <Compile Include="SongsForm.Designer.cs">
       <DependentUpon>SongsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl1.cs" />
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
