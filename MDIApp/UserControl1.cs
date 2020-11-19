@@ -10,10 +10,23 @@ using System.Windows.Forms;
 
 namespace MDIApp
 {
+
     public partial class UserControl1 : UserControl
     {
         public enum PictureGenre { rock, metal, rap };
-        public PictureGenre state { get; set; }
+        public PictureGenre state;
+        
+        [Category("Picture_")]
+        [BrowsableAttribute(true)]
+        public PictureGenre Picture_ {
+            get { return state; }
+            set 
+            { 
+                state = value; 
+                setImage(); 
+            } 
+        }
+
         private System.ComponentModel.IContainer components = null;
         public event Action<string> UpdatePictureGenreEvent;
 

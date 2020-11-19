@@ -37,9 +37,9 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.authorTextBox = new System.Windows.Forms.TextBox();
+            this.genreTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.genreTextBox = new System.Windows.Forms.TextBox();
             this.userControl11 = new MDIApp.UserControl1();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -115,6 +115,15 @@
             this.authorTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.authorTextBox_Validating);
             this.authorTextBox.Validated += new System.EventHandler(this.authorTextBox_Validated);
             // 
+            // genreTextBox
+            // 
+            this.errorProvider.SetIconAlignment(this.genreTextBox, System.Windows.Forms.ErrorIconAlignment.TopLeft);
+            this.genreTextBox.Location = new System.Drawing.Point(125, 119);
+            this.genreTextBox.Name = "genreTextBox";
+            this.genreTextBox.ReadOnly = true;
+            this.genreTextBox.Size = new System.Drawing.Size(200, 20);
+            this.genreTextBox.TabIndex = 13;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -134,19 +143,11 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Genre";
             // 
-            // genreTextBox
-            // 
-            this.errorProvider.SetIconAlignment(this.genreTextBox, System.Windows.Forms.ErrorIconAlignment.TopLeft);
-            this.genreTextBox.Location = new System.Drawing.Point(125, 119);
-            this.genreTextBox.Name = "genreTextBox";
-            this.genreTextBox.ReadOnly = true;
-            this.genreTextBox.Size = new System.Drawing.Size(200, 20);
-            this.genreTextBox.TabIndex = 13;
-            // 
             // userControl11
             // 
             this.userControl11.Location = new System.Drawing.Point(354, 50);
             this.userControl11.Name = "userControl11";
+            this.userControl11.Picture_ = MDIApp.UserControl1.PictureGenre.rap;
             this.userControl11.Size = new System.Drawing.Size(167, 162);
             this.userControl11.TabIndex = 12;
             // 
